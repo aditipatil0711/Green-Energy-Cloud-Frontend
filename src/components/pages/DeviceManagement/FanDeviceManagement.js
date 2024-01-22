@@ -5,10 +5,6 @@ import { Table } from 'react-bootstrap';
 import '../../../styles/deviceMgmt.css'
 
 
-const trStyle = {
-    textAlign : "center",
-
-}
 const buttonStyle = {
   color: "white",
   background: "teal",
@@ -262,8 +258,8 @@ export const FanDeviceManagement = () => {
     return(
         <>        
         <div className="text-left">
-            <h5>Device List</h5>
-            <Table table borderless style={{width: "93%", marginLeft: "2em", border: "1px solid lightgrey"}}>
+            <h5 className='h5-label'>Device List</h5>
+            <Table table className='list-table'>
                 <thead>
                 <tr>
                     <th className='light-grey'>Device ID</th>                    
@@ -275,7 +271,7 @@ export const FanDeviceManagement = () => {
                 </thead>
                 
                 {fandetails.map((data) => (
-                    <tr style = {trStyle}>
+                    <tr className='list-tr'>
                         <td>{data.fanId}</td>
                         <td style={textStyle}>{data.fanName}</td>
                         <td><button style ={buttonStyle} onClick={ () => view(data) }>View</button></td>
@@ -285,8 +281,8 @@ export const FanDeviceManagement = () => {
                 ))}                                    
             </Table>
         </div>
-        <button style = {{width : 'fit-content', color: "white", background: "teal", padding: "10px", marginLeft: "1.5em"}} onClick={addfan}>Add a Device + </button>
-        <form style = {hideform ? noneStyle:blockstyle} onSubmit = {onsubmitaction}>
+        <button className='curved-corners' style = {{width : 'fit-content', color: "white", background: "teal", padding: "10px", marginLeft: "1.5em"}} onClick={addfan}>Add a Device + </button>
+        <form className='add-device' style = {hideform ? noneStyle:blockstyle} onSubmit = {onsubmitaction}>
             <input type="hidden" name = "device_id" value = {_id}/>
             <div><label>Device Name:</label></div>
             <div><input type="text" name = "dname" style={textStyle} value = {fanName} onChange = {(e) => (setfanName(e.target.value))} disabled = {isdisabled}/></div>
@@ -312,7 +308,7 @@ export const FanDeviceManagement = () => {
             <div><input type="text" name = "ddep"style={textStyle}  value = {installationDate} onChange = {(e) => (setinstallationDate(e.target.value))} disabled = {isdisabled}/></div>
             <div><label>Power:</label></div>
             <div><input type="text" name = "dpower" style={textStyle} value = {power} onChange = {(e) => (setPower(e.target.value))} disabled = {isdisabled}/></div>
-           <button style={showsubmit? formButton:noneStyle} type='submit'>Submit</button>
+           <button className='curved-corners' style={showsubmit? formButton:noneStyle} type='submit'>Submit</button>
         </form>
         </>
     )

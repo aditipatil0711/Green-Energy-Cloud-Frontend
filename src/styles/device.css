@@ -30,14 +30,6 @@ button{
     box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
   }
-  h1 {
-    color: white;
-    background: transparent;
-    background-color: #000000;
-    padding-bottom: 6px 0 2px 0;
-    margin-bottom: 10px;
-    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
-  }
   input {
     text-align: center;
     top: 10px;
@@ -52,7 +44,7 @@ button{
   button {
     min-height: 20px;
     width: 70px;
-    /* border-radius: 50%; */
+    /* border-radius: 50%; 
     border-color: transparent;
     background-color: #000000;
     color: white;
@@ -61,7 +53,7 @@ button{
     outline: none;
     margin-left: 10px;
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    cursor: pointer; */
   }
   button:hover {
     background-color: grey;

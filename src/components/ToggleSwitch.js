@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import "../styles/ToggleSwitch.css";
 
-function ToggleSwitch({activeStatus, meterId, gettoggle}) {
+function ToggleSwitch({activeStatus, meterId, gettoggle, type}) {
 
  
   const [isToggled, setIsToggled] = useState(activeStatus);
@@ -28,7 +28,7 @@ function ToggleSwitch({activeStatus, meterId, gettoggle}) {
   return (
     <label className="toggle-switch">
       <input type="checkbox" checked={isToggled} onChange={onToggle} />
-      <span className="switch" />
+      <span className="switch" id={type} />
     </label>
   );
 }

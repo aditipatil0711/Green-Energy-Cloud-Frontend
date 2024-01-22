@@ -2,7 +2,7 @@ import React, {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MyToast from '../MyToast'
-
+import '../../styles/LoginPage.css'
 // import '../../App.css'
 
 export const LoginPage = () => {
@@ -53,7 +53,7 @@ export const LoginPage = () => {
     }
 
     return (
-        <div className="text-center m-5-auto" style={loginStyle}>
+        <div className="text-center m-5-auto loginStyle">
             <h2 style={{marginLeft: "3em"}}>Sign in to us</h2>
             <form>
                 <p>
@@ -66,26 +66,14 @@ export const LoginPage = () => {
                     <input type="password" name="password" required onChange={(e) => { setPassword(e.target.value); }}/>
                 </p>
                 <p>
-                    <button style={buttonStyle} id="sub_btn" type="submit" onClick={login}>Login</button>
+                    <button className='buttonStyle' id="sub_btn" type="submit" onClick={login}>Login</button>
+                </p>
+                <p>
+                  <a href="/register">Sign Up</a>
                 </p>
             </form>
             <MyToast show={showToast} handleClose={() => setShowToast(false)} text={toastText} />
 
         </div>
     )
-}
-
-const loginStyle = {
-  border: "2px solid teal",
-    width: "36em",
-    marginLeft: "39em",
-    marginTop: "10em",
-    borderRadius: "8px",
-    padding: "10px"
-}
-const buttonStyle = {
-  width: "10em",
-  padding: "10px",
-  color: "white",
-  background: "teal"
 }

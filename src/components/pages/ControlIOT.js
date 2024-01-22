@@ -1,21 +1,16 @@
 import React from 'react'
 import '../../styles/Buttons.css'
+import '../../styles/Control.css'
 import Table from 'react-bootstrap/Table'
 import light from '../../assets/images/light-meter-icon.png'
 import fan from '../../assets/images/fan-meter-icon.jpg'
 import ToggleSwitch from '../ToggleSwitch'
 import settings from '../../assets/images/settings-icon.png'
 import Box from '@mui/material/Box'
+import {FaLightbulb, FaFan} from 'react-icons/fa'
 import { useState } from 'react'
 
-const buttonStyle = {
-  border:"1px solid rgba(0, 0, 0, 0.5)",
-  fontSize:"15px" ,
-  width:"10em",
-  color: 'white',
-  background: "teal",
-  padding: "10px"
-}
+
 function ControlIOT() {
   const [iot, setIOT] = useState('Light');
   const [setting, setSetting] = useState('');
@@ -27,16 +22,16 @@ function ControlIOT() {
     <div className="table-wrapper">
       <br></br>
       <div style={{display:'flex', justifyContent: "center"}}>
-      <button className='light-grey' style={buttonStyle} onClick={(e) => setIOT('Light')}>
-        Light Meter
+      <button className='light-grey curved-corners selection-button Light' onClick={(e) => setIOT('Light')}>
+        Light
       </button>
-      <button className='light-grey' style={buttonStyle} onClick={(e) => setIOT('Fan')}>
-        Fan Meter
+      <button className='light-grey curved-corners selection-button Fan' onClick={(e) => setIOT('Fan')}>
+        Fan
       </button>
       </div>
       <br></br>
-      <Box textAlign="center" bgcolor="#D3D3D3" border="1px solid rgba(0, 0, 0, 0.12)" padding="10px 10px" width="20%" > <h6>Device List</h6></Box>
-      <Table striped bordered hover>
+      <Box style={{textAlign:'center', backgroundColor:'#323232', color:'white', border:'1px solid white', padding:15, width:'20%', borderRadius:'1vh'}}> <h6>Device List</h6></Box>
+      <Table hover className='control-table'>
         <thead>
           <tr>
             <th>Device ID</th>
@@ -48,69 +43,69 @@ function ControlIOT() {
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/> {iot==='Light'? 'LIOT':'FIOT'}001</th>
-            <th>{iot} Meter 1</th>
-            <th><ToggleSwitch /></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th> <img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}001</td>
+            <td>{iot} Meter 1</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td> <img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/>{iot==='Light'? 'LIOT':'FIOT'}002</th>
-            <th>{iot} Meter 2</th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}002</td>
+            <td>{iot} Meter 2</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/>{iot==='Light'? 'LIOT':'FIOT'}003</th>
-            <th>{iot} Meter 3</th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}003</td>
+            <td>{iot} Meter 3</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/>{iot==='Light'? 'LIOT':'FIOT'}004</th>
-            <th>{iot} Meter 4</th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}004</td>
+            <td>{iot} Meter 4</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/>{iot=='Light'? 'LIOT':'FIOT'}005</th>
-            <th>{iot} Meter 5</th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}005</td>
+            <td>{iot} Meter 5</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/>{iot=='Light'? 'LIOT':'FIOT'}006</th>
-            <th>{iot} Meter 6</th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}006</td>
+            <td>{iot} Meter 6</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
-          <tr>
-            <th><img width="30" src={iot ==='Light'? light : fan}/>{iot=='Light'? 'LIOT':'FIOT'}007</th>
-            <th>{iot} Meter 7</th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><ToggleSwitch/></th>
-            <th><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></th>
+          <tr className='list-tr'>
+            <td>{iot==='Light'?<FaLightbulb size={25} color={'black'} alt="light bulb image" />:<FaFan size={25} color={'black'} alt='fan image'/>}&ensp;{iot==='Light'? 'LIOT':'FIOT'}007</td>
+            <td>{iot} Meter 7</td>
+            <td><ToggleSwitch type='a'/></td>
+            <td><ToggleSwitch type='s'/></td>
+            <td><ToggleSwitch type='c'/></td>
+            <td><img width="30" src={settings} onClick={(s) => setSetting('setting')}/></td>
           </tr>
           </tbody>
       </Table>
       <br></br>
       {setting==='setting'?
-      <div>
-        <Box textAlign="center" bgcolor="#D3D3D3" border="1px solid rgba(0, 0, 0, 0.12)" padding="10px 10px" width="20%" > <h6>Configuration</h6></Box>
-        <div style={{display:'flex', justifyContent: "center"}}>
+      <div className='control-setting'>
+        <Box style={{textAlign:'center', backgroundColor:'#323232', border:'1px solid white', borderRadius:10, padding:'10px 10px', width:'20%', marginBottom:10}} > <h6>Configuration</h6></Box>
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', flexShrink:0, width:'80%', margin:'auto'}}>
           <label htmlFor="type">
             Select Communication Protocol
             <br></br>
@@ -139,7 +134,7 @@ function ControlIOT() {
             </select>
           </label>
         </div>
-        <div style={{display:'flex', justifyContent: "center"}}><button className='light-grey' style={{border:"1px solid rgba(0, 0, 0, 0.5)",fontSize:"15px" ,width:"100px", color: 'black'}}><h6>Confirm</h6></button></div>
+        <div style={{display:'flex', justifyContent: "center"}}><button className='light-grey curved-corners' style={{border:"1px solid rgba(0, 0, 0, 0.5)",fontSize:"15px" ,width:"100px", color: 'black'}}><h6>Confirm</h6></button></div>
       </div>
       :null}
 

@@ -10,7 +10,7 @@
 .toggle-switch .switch {
   position: absolute;
   cursor: pointer;
-  background-color: #ccc;
+  background-color: lightgray;
   border-radius: 25px;
   top: 0;
   right: 0;
@@ -33,6 +33,12 @@
   transform: translateX(25px);
   background-color: white;
 }
-.toggle-switch input[type="checkbox"]:checked + .switch {
-  background-color: #2a9e1b;
+.toggle-switch input[type="checkbox"]:checked + #a.switch {
+  background-color: cornflowerblue;
+}
+.toggle-switch input[type="checkbox"]:checked + #s.switch {
+  background-color: mediumspringgreen;
+}
+.toggle-switch input[type="checkbox"]:checked+ #c.switch {
+  background-color: hotpink;
 }

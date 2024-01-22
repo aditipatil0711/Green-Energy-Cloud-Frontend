@@ -12,16 +12,17 @@ export const Navbar = () => {
     const showSidebar = () => setSidebar(!sidebar);
     return (
         <>
+        <div id='background'></div> {/*N change*/}
           <IconContext.Provider value={{ color: "#FFF" }}>
             {/* All the icons now are white */}
             <div className="navbar">
               <Link to="#" className="menu-bars">
                 <FaIcons.FaBars onClick={showSidebar} />
-              </Link> &ensp; &ensp;
-              <h2>Smart Meter Management </h2>
+              </Link>
+              <h2> Green Energy Cloud </h2>
                {/* ??<Buttons />  */}
             </div>
-            <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+            <nav style={{zIndex:'1'}} className={sidebar ? "nav-menu active" : "nav-menu"}>
               <ul className="nav-menu-items" onClick={showSidebar}>
                 <li className="navbar-toggle">
                   <Link to="#" className="menu-bars">

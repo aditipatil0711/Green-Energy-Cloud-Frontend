@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Chart } from "react-google-charts";
-import energy from '../../assets/images/meter.jpg'
+import '../../styles/Monitor.css'
+import energy from '../../assets/images/water-meter-icon.png'
+import {FaTint} from 'react-icons/fa'
 
 const parameters = [
   {title : "Work Status:",
@@ -105,7 +107,7 @@ export const options = {
 };
 
 const meterStyle = {
-  
+
 }
 const meterListStyle = {
   display: "inline-grid",
@@ -120,13 +122,12 @@ const para = {
   marginTop: '8em'
 }
 
-export const MonitorTracking = () => {
+export const MonitorTrackingWater = () => {
 
 const [electricMeterUser , setElectricMeterUser] = useState([]);
-const userid = localStorage.getItem("id");
 
 useEffect(() => {
-  axios.get("http://localhost:3001/api/simulatedmeter/getSimulatedMeters?user_id=" + userid).
+  axios.get("http://localhost:3001/api/simulated/getSimulateddetails/?type=WaterMeter").
   then(async (res) => {
       if (res.status == 200) {
         if (res) {
@@ -146,38 +147,40 @@ useEffect(() => {
 
     <>
       <div className="details-wrapper" style={detailsWrap}>
-        <div className="parameter" style={para}>
-          <ol style={meterStyle}>
-            {parameters.map((data) => (
-              <li style={{paddingTop: data.paddingTop, fontWeight: "600"}}>{data.title}</li>
-            ))}
 
-          </ol>
-        </div>  
-        <div className="meter-details-1">
-          <ol>
-            {electricMeterUser.map((data) => (
-              <li style={meterListStyle}>
-                <span style={{ background: 'lightgray', boxShadow: "5px 5px #888888" }} >{data.meter_name}</span>
-                <img style={{ marginTop: "16px", marginLeft: "60px" }} width="60" src={energy} alt="alt" />
-                <span style={data.work_status === "true" ? { color: 'green' } : { color: 'red' }} >{data.work_status =="true"? "Working":"Failing" }</span>
-                <span>{data.Electricity_Capacity}</span>
-                <span>{data.Voltage}</span>
-                <span>{data.Current}</span>
-                <span>{data.Last_24hr_Usage}</span>
-                <span>{data.This_Weeks_Usage}</span>
-                <span>{data.This_Months_Usage}</span>
-                <span>{data.This_Years_Usage}</span>
-              </li>
+      <table className="monitor-list">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            {parameters.map((data) => (
+              <th style={{paddingTop: data.paddingTop, paddingBottom: data.paddingTop, fontWeight: "600"}}>{data.title}</th>
             ))}
-          </ol>
-        </div>
+          </tr>
+        </thead>
+        <tbody>
+          {electricMeterUser.map((data) => (
+            <tr style={meterListStyle}>
+              <td>{data.name}</td>
+              <td><FaTint size={50} color={'white'} alt='water drop image'/></td>
+              <td style={data.work_Status === 'Working' ? { color: 'green' } : { color: 'red' }}>{data.work_Status}</td>
+              <td>{data.electricity_capacity}</td>
+              <td>{data.Voltage}</td>
+              <td>{data.Current}</td>
+              <td>{data.Last_24_hr}</td>
+              <td>{data.weekUsage}</td>
+              <td>{data.monthUsage}</td>
+              <td>{data.yearUsage}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       </div>
       <Chart
         chartType="Line"
         width="78em"
         height="300px"
-        style={{ position: 'relative', left: '10em' }}
+        style={{ position: 'relative', left: '2em' }}
         data={data}
         options={options}
       />

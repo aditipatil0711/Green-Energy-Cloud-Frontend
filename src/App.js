@@ -9,7 +9,7 @@ import HomePage from './components/pages/HomePage'
 import { Navbar } from './components/Navbar'
 import { DeviceManagement } from './components/pages/DeviceManagement/DeviceManagement'
 import { ControlConfiguration } from './components/pages/ControlConfiguration'
-import { MonitorTracking } from './components/pages/MonitorTracking'
+import { MonitorTracking } from './components/pages/MonitorTrackingElectric'
 import { IoT } from './components/pages/IoT'
 import { Meter } from './components/pages/Meter'
 import { Admin } from './components/Admin/Admin'
@@ -20,6 +20,10 @@ import { Adminmetrics } from './components/Admin/Adminmetrics.js';
 import {SideBar} from './components/Admin/Admin.js'
 import UserTable from './components/Admin/UserTable';
 import { MonitorTrackingOptions} from './components/pages/MonitorTrackingOptions'
+import { MLModelManager } from './components/pages/MLModelManager/MLModelManager'
+import { MLModelEvaluation } from './components/pages/MLModelEvaluation/MLModelEvaluation'
+import { MLModelDeployment } from './components/pages/MLModelDeployment/MLModelDeployment'
+import { MLModelMonitor } from './components/pages/MLModelMonitor/MLModelMonitor'
 
 function App() {
   
@@ -33,6 +37,10 @@ function App() {
                     <Route path="/register" element={<RegisterPage/>} />
                     <Route path="/forget-password" element={<ForgetPasswordPage/>} />
                     <Route path="/home" element={<><Navbar/><HomePage/></>}/>
+                    <Route path="/MLModelManager" element={<><Navbar/><MLModelManager/></>}/>
+                    <Route path="/MLModelDeployment" element={<><Navbar/><MLModelDeployment/></>}/>
+                    <Route path="/MLModelMonitor" element={<><Navbar/><MLModelMonitor/></>}/>
+                    <Route path="/MLModelEvaluation" element={<><Navbar/><MLModelEvaluation/></>}/>
                     <Route path="/device-mgmt" element={<><Navbar/><DeviceManagement/> </> } />
                     <Route path="/control-config" element={<><Navbar/><ControlConfiguration/> </> } />
                     <Route path="/monitor-tracking-options" element={<><Navbar/><MonitorTrackingOptions/> </> } />

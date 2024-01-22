@@ -38,44 +38,44 @@ export default function HomePage() {
     return (
         <>
         <div className="text-left" style={{width: '80%', marginLeft: '17em'}} >
-            <h5>Today's Usage</h5>
+            <h5 className='h5-label'>Today's Usage</h5>
             <Table table borderless>
                 <thead>
                 <tr>
                 <th></th>
-                    <th className='light-grey'>Todays's Usage <p>24 KWh</p></th>
+                    <th className='light-grey curved-corners'>Todays's Usage <p>24 KWh</p></th>
                     <th></th>
-                    <th className='light-grey'>last 24hr Usage <p>34 KWh</p> </th>       
+                    <th className='light-grey curved-corners'>last 24hr Usage <p>34 KWh</p> </th>       
                     <th></th>     
-                    <th className='light-grey'>Last Update <p>2022-12-05T03:26:34.527+00:00</p> </th>
+                    <th className='light-grey curved-corners'>Last Update <p>2022-12-05T03:26:34.527+00:00</p> </th>
                     <th></th>
                 </tr>
                 </thead>
                </Table> 
-            <h5>Week's Usuage</h5>
+            <h5 className='h5-label'>This Week's Usage</h5>
             <Table table borderless>
                 <thead>
                 <tr>
                 <th></th>
-                    <th className='light-grey'>Total daily Usage <p>572 KWh</p> </th>
+                    <th className='light-grey curved-corners'>Total daily Usage <p>572 KWh</p> </th>
                     <th></th>
-                    <th className='light-grey'>Avg Daily  Usage <p>86 KWh</p> </th>       
+                    <th className='light-grey curved-corners'>Avg Daily  Usage <p>86 KWh</p> </th>       
                     <th></th>     
-                    <th className='light-grey'>Max Usage<p>77 KWh</p> </th>
+                    <th className='light-grey curved-corners'>Max Usage<p>77 KWh</p> </th>
                     <th></th>
                 </tr>
                 </thead>
                </Table> 
-            <h5>Month's Usuage</h5>
+            <h5 className='h5-label'>This Month's Usage</h5>
             <Table table borderless>
                 <thead>
                 <tr>
                 <th></th>
-                <th className='light-grey'>Total daily Usage <p>2350 KWh</p> </th>
+                <th className='light-grey curved-corners'>Total daily Usage <p>2350 KWh</p> </th>
                     <th></th>
-                    <th className='light-grey'>Avg Daily Usage <p>65 KWh</p> </th>       
+                    <th className='light-grey curved-corners'>Avg Daily Usage <p>65 KWh</p> </th>       
                     <th></th>     
-                    <th className='light-grey'>Max Usage <p>102 KWh</p> </th>
+                    <th className='light-grey curved-corners'>Max Usage <p>102 KWh</p> </th>
                     <th></th>
                 </tr>
                 </thead>
@@ -85,7 +85,7 @@ export default function HomePage() {
                     chartType="Line"
                     width="80%"
                     height="300px"
-                    style={{position: 'relative', left: '12em'}}
+                    style={{position: 'relative'}}
                     data={data}
                     options={options}
                     />

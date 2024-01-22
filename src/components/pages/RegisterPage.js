@@ -6,9 +6,8 @@ import '../../App.css'
 export const RegisterPage = () => {
 
     return (
-        <div className="text-center m-5-auto">
-            <h2>Join us</h2>
-            <h5>Create your personal account</h5>
+        <div className="text-center m-5-auto loginStyle">
+            <h5 style={{margin:'auto'}}>Create your personal account</h5>
             <form action="/home">
                 <p>
                     <label>Username</label><br/>
@@ -23,10 +22,10 @@ export const RegisterPage = () => {
                     <input type="password" name="password" requiredc />
                 </p>
                 <p>
-                    <input type="checkbox" name="checkbox" id="checkbox" required /> <span>I agree all statements in <a href="https://google.com" target="_blank" rel="noopener noreferrer">terms of service</a></span>.
+                    <input type="checkbox" name="checkbox" id="checkbox" style={{width:'auto'}} required /> <span>I agree to all statements in <a href="https://google.com" target="_blank" rel="noopener noreferrer">terms of service.</a></span>
                 </p>
                 <p>
-                    <button id="sub_btn" type="submit">Register</button>
+                    <button className='buttonStyle' id="sub_btn" type="submit">Sign Up</button>
                 </p>
             </form>
             <footer>

@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Chart } from "react-google-charts";
-import fan from '../../assets/images/fan.jpg'
+import '../../styles/Monitor.css'
+import energy from '../../assets/images/light.jpg'
+import {FaLightbulb} from 'react-icons/fa'
+
 
 const parameters = [
   {title : "Work Status:",
   paddingTop: ""}, 
-  {title : "Fan Speed:",
-  paddingTop: ""},
-  {title : "Speed Number:",
+  {title : "Luminious Efficacy:",
   paddingTop: "10px"},
-  {title : "Rotation Pattern:",
+  {title : "Luminious Flux:",
   paddingTop: "23px"},
+  {title : "Luminious Intensity:",
+  paddingTop: "18px"},
   {title : "Voltage:",
   paddingTop: "18px"},
   {title : "Current:",
-  paddingTop: "18px"},
-
-]   
-    
+  paddingTop: "20px"},
+]
 
 
 export const data = [
@@ -67,18 +68,17 @@ const para = {
   marginTop: '8em'
 }
 
-export const Fan = () => {
+export const MonitorLight = () => {
 
 const [electricMeterUser , setElectricMeterUser] = useState([]);
-const userid = localStorage.getItem("id");
-
 
 useEffect(() => {
-  axios.get("http://localhost:3001/api/simulatedfan/getSimulatedFans?user_id=" + userid).
+  axios.get("http://localhost:3001/api/simulatedlight/getSimulatedLights?user_id=637220a2858bb384838f8286").
   then(async (res) => {
       if (res.status == 200) {
         if (res) {
           setElectricMeterUser(res.data.user);
+          console.log(electricMeterUser);
         }            
       }
       else {
@@ -93,36 +93,38 @@ useEffect(() => {
 
     <>
       <div className="details-wrapper" style={detailsWrap}>
-        <div className="parameter" style={para}>
-          <ol style={meterStyle}>
-            {parameters.map((data) => (
-              <li style={{paddingTop: data.paddingTop, fontWeight: "600"}}>{data.title}</li>
-            ))}
 
-          </ol>
-        </div>  
-        <div className="meter-details-1">
-          <ol>
-            {electricMeterUser.map((data) => (
-              <li style={meterListStyle}>
-                <span style={{ background: 'lightgray', boxShadow: "5px 5px #888888" }} >{data.fan_name}</span>
-                <img style={{ marginTop: "16px", marginLeft: "60px" }} width="60" src={fan} alt="alt" />
-                <span style={data.work_status === "true" ? { color: 'green' } : { color: 'red' }} >{data.work_status ==  "true" ? "Working": "Failing"}</span>
-                <span>{data.Fan_Speed}</span>
-                <span>{data.Speed_Number}</span>
-                <span>{data.Rotation_Pattern}</span>
-                <span>{data.Voltage}</span>
-                <span>{data.Current}</span>
-              </li>
+      <table className="monitor-list">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            {parameters.map((data) => (
+              <th style={{paddingTop: data.paddingTop, paddingBottom: data.paddingTop, fontWeight: "600"}}>{data.title}</th>
             ))}
-          </ol>
-        </div>
+          </tr>
+        </thead>
+        <tbody>
+          {electricMeterUser.map((data) => (
+            <tr style={meterListStyle}>
+              <td>{data.light_name}</td>
+              <td><FaLightbulb size={50} color={'white'} alt="light bulb image" /></td>
+              <td style={data.work_status === 'true' ? { color: 'green' } : { color: 'red' }}>{data.work_status === 'true' ? 'Working' : 'Failing'}</td>
+              <td>{data.Luminious_Efficacy}</td>
+              <td>{data.Luminious_Flux}</td>
+              <td>{data.Luminious_Intensity}</td>
+              <td>{data.Voltage}</td>
+              <td>{data.Current}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       </div>
       <Chart
         chartType="Line"
         width="78em"
         height="300px"
-        style={{ position: 'relative', left: '10em' }}
+        style={{ position: 'relative', left: '1em' }}
         data={data}
         options={options}
       />

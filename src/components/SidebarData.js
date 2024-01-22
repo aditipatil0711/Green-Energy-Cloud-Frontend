@@ -35,6 +35,30 @@ export const SidebarData = [
       cName: "nav-text"
     },
     {
+      title: "ML Model Manager",
+      path: "/MLModelManager",
+      icon: <FaIcons.FaMonero />,
+      cName: "nav-text"
+    },
+    {
+      title: "ML Model Deployment",
+      path: "/MLModelDeployment",
+      icon: <FaIcons.FaMonero />,
+      cName: "nav-text"
+    },
+    {
+      title: "ML Model Monitor",
+      path: "/MLModelMonitor",
+      icon: <FaIcons.FaMonero />,
+      cName: "nav-text"
+    },
+    {
+      title: "ML Model Evaluation",
+      path: "/MLModelEvaluation",
+      icon: <FaIcons.FaMonero />,
+      cName: "nav-text"
+    },
+    {
       title: "Logout",
       path: "/",
       icon: <IoIcons.IoMdPeople />,

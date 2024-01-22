@@ -1,22 +1,17 @@
 import React, { useEffect } from 'react'
 import axios from "axios";
 import '../../styles/Buttons.css'
+import '../../styles/Control.css'
 import Table from 'react-bootstrap/Table'
 import energy from '../../assets/images/energy-meter-icon.png'
 import water from '../../assets/images/water-meter-icon.png'
 import ToggleSwitch from '../ToggleSwitch'
 import settings from '../../assets/images/settings-icon.png'
 import Box from '@mui/material/Box'
+import {BsLightningChargeFill} from 'react-icons/bs'
+import {FaTint} from 'react-icons/fa'
 import { useState } from 'react'
 
-const buttonStyle = {
-  border:"1px solid rgba(0, 0, 0, 0.5)",
-  fontSize:"15px" ,
-  width:"10em",
-  color: 'white',
-  background: "teal",
-  padding: "10px"
-}
 
 function ControlMeter() {
 
@@ -54,16 +49,16 @@ function ControlMeter() {
     <div className="table-wr  apper">
       <br></br>
       <div style={{display:'flex', justifyContent: "center"}}>
-      <button className='light-grey' style={buttonStyle} onClick={(e) => setMeter('Electricity')}>
-        Electricity Meter
+      <button className='light-grey curved-corners selection-button EMeter' onClick={(e) => setMeter('Electricity')}>
+        Electric
       </button>
-      {/* <button className='light-grey' style={{ border:"1px solid rgba(0, 0, 0, 0.5)",fontSize:"15px" ,width:"100px", color: 'green' }} onClick={(e) => setMeter('Water')}>
-        Water Meter
-      </button> */}
+      <button className='light-grey curved-corners selection-button WMeter' onClick={(e) => setMeter('Water')}>
+        Water
+      </button>
       </div>
       <br></br>
       <Box textAlign="center" bgcolor="#D3D3D3" border="1px solid rgba(0, 0, 0, 0.12)" padding="10px 10px" width="20%" > <h6>Device List</h6></Box>
-      <Table striped bordered hover>
+      <Table hover className='control-table'>
         <thead>
           <tr>
             <th>Device ID</th>
@@ -76,8 +71,8 @@ function ControlMeter() {
           </thead>
           <tbody>
           {meterList.map((item) => (
-          <tr key={item._id}>
-            <td><img width="30" src={meter ==='Electricity'? energy : water}/>{item.electricMeterId}</td>
+          <tr className='list-tr' key={item._id}>
+            <td>{meter==='Electricity'?<BsLightningChargeFill size={25} color={'black'} alt='lightning image'/>:<FaTint size={25} color={'black'} alt='water drop image'/>}&ensp;{item.electricMeterId}</td>
             <td>{item.electricMeterName}</td>
             <td><ToggleSwitch activeStatus={item.activeStatus} meterId = {item._id}/></td>
             <td><ToggleSwitch activeStatus={item.workingStatus} meterId = {item._id}/></td>
@@ -89,9 +84,9 @@ function ControlMeter() {
       </Table>
       <br></br>
       {setting==='setting'?
-      <div>
-        <Box textAlign="center" bgcolor="#D3D3D3" border="1px solid rgba(0, 0, 0, 0.12)" padding="10px 10px" width="20%" > <h6>Configuration</h6></Box>
-        <div style={{display:'flex', justifyContent: "center"}}>
+      <div className='control-setting'>
+        <Box textAlign="center" bgcolor="#323232" border="1px solid white" padding="10px 10px" width="20%" > <h6>Configuration</h6></Box>
+        <div style={{display:'flex', justifyContent: "center", width:'100%'}}>
           <label htmlFor="type">
             Select Communication Protocol
             <br></br>
@@ -120,7 +115,7 @@ function ControlMeter() {
             </select>
           </label>
         </div>
-        <div style={{display:'flex', justifyContent: "center"}}><button className='light-grey' style={{border:"1px solid rgba(0, 0, 0, 0.5)",fontSize:"15px" ,width:"100px", color: 'black'}}><h6>Confirm</h6></button></div>
+        <div style={{display:'flex', justifyContent: "center"}}><button className='light-grey curved-corners' style={{border:"1px solid rgba(0, 0, 0, 0.5)",fontSize:"15px" ,width:"100px", color: 'black'}}><h6>Confirm</h6></button></div>
       </div>
       :null}
 

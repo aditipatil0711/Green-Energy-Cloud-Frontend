@@ -2,7 +2,8 @@ import React from 'react'
 import '../../styles/Buttons.css'
 import AddDevice from './AddDevice'
 import Table from 'react-bootstrap/Table';
-//import "./App.css";
+//import "./PagesApp.css";
+import '../../styles/deviceMgmt.css'
 import { useState } from "react";
 import Axios from "axios";
 
@@ -110,19 +111,19 @@ export const Meter = () => {
         <br></br>
 
      
-        <div class="flex-container">
+        <div className="add-device">
 
-          <div class="flex-child"> <div className='bleh'> <label>Device Name:</label> <input type="text" onChange={(event) => { setelectricMeterName(event.target.value); }} /> </div> 
+          <div> <div className='bleh'> <label>Device Name:</label> <input type="text" onChange={(event) => { setelectricMeterName(event.target.value); }} /> </div> 
           <div className='bleh'> <label>Device ID:</label> <input type="text" onChange={(event) => { electricMeterId(event.target.value); }} /> </div>
           <div className='bleh'> <label>Manufacturer:</label> <input type="text" onChange={(event) => { setmanufacturer(event.target.value); }} /> </div>
           <div className='bleh'> <label>Location:</label> <input type="text" onChange={(event) => { setlocation(event.target.value); }} /> </div>
           </div>
-          <div class="flex-child"> <div className='bleh'> <label>Model:</label> <input type="text" onChange={(event) => { setmodel(event.target.value); }} /> </div> 
+          <div> <div className='bleh'> <label>Model:</label> <input type="text" onChange={(event) => { setmodel(event.target.value); }} /> </div> 
           <div className='bleh'> <label>Amperage Capacity:</label> <input type="text" onChange={(event) => { setelectricCapacity(event.target.value); }} /> </div>
           <div className='bleh'> <label>Installation Method:</label> <input type="text" onChange={(event) => { setinstallationMethod(event.target.value); }} /> </div>
           <div className='bleh'> <label>Measurement Accuracy:</label> <input type="text" onChange={(event) => { setmeausurementAccuracy(event.target.value); }} /> </div>
           </div>
-          <div class="flex-child"> <div className='bleh'> <label>Installation Date:</label> <input type="text" onChange={(event) => { setinstallationDate(event.target.value); }} /> </div> 
+          <div> <div className='bleh'> <label>Installation Date:</label> <input type="text" onChange={(event) => { setinstallationDate(event.target.value); }} /> </div> 
           <div className='bleh'> <label>Dimensions:</label> <input type="text" onChange={(event) => { setdimensions(event.target.value); }} /> </div>
           <div className='bleh'> <label>Deployment Date:</label> <input type="text" onChange={(event) => { setdeploymentDate(event.target.value); }} /> </div>
           <div className='bleh'> <label>Power:</label> <input type="text" onChange={(event) => { setPower(event.target.value); }} /> </div>

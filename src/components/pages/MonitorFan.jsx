@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Chart } from "react-google-charts";
-import energy from '../../assets/images/light.jpg'
-
+import '../../styles/Monitor.css'
+import fan from '../../assets/images/fan.jpg'
+import {FaFan} from 'react-icons/fa';
 
 const parameters = [
   {title : "Work Status:",
   paddingTop: ""}, 
-  {title : "Luminious Efficacy:",
+  {title : "Fan Speed:",
+  paddingTop: ""},
+  {title : "Speed Number:",
   paddingTop: "10px"},
-  {title : "Luminious Flux:",
+  {title : "Rotation Pattern:",
   paddingTop: "23px"},
-  {title : "Luminious Intensity:",
-  paddingTop: "18px"},
   {title : "Voltage:",
   paddingTop: "18px"},
   {title : "Current:",
-  paddingTop: "20px"},
-]
+  paddingTop: "18px"},
+
+]   
+    
 
 
 export const data = [
@@ -66,17 +69,18 @@ const para = {
   marginTop: '8em'
 }
 
-export const Light = () => {
+export const MonitorFan = () => {
 
 const [electricMeterUser , setElectricMeterUser] = useState([]);
+const userid = localStorage.getItem("id");
+
 
 useEffect(() => {
-  axios.get("http://localhost:3001/api/simulatedlight/getSimulatedLights?user_id=637220a2858bb384838f8286").
+  axios.get("http://localhost:3001/api/simulatedfan/getSimulatedFans?user_id=" + userid).
   then(async (res) => {
       if (res.status == 200) {
         if (res) {
           setElectricMeterUser(res.data.user);
-          console.log(electricMeterUser);
         }            
       }
       else {
@@ -91,36 +95,38 @@ useEffect(() => {
 
     <>
       <div className="details-wrapper" style={detailsWrap}>
-        <div className="parameter" style={para}>
-          <ol style={meterStyle}>
-            {parameters.map((data) => (
-              <li style={{paddingTop: data.paddingTop, fontWeight: "600"}}>{data.title}</li>
-            ))}
 
-          </ol>
-        </div>  
-        <div className="meter-details-1">
-          <ol>
-            {electricMeterUser.map((data) => (
-              <li style={meterListStyle}>
-                <span style={{ background: 'lightgray', boxShadow: "5px 5px #888888" }} >{data.light_name}</span>
-                <img style={{ marginTop: "16px", marginLeft: "60px" }} width="60" src={energy} alt="alt" />
-                <span style={data.work_status === "true" ? { color: 'green' } : { color: 'red' }} >{data.work_status == "true"? "Working": "Failing"}</span>
-                <span>{data.Luminious_Efficacy}</span>
-                <span>{data.Luminious_Flux}</span>
-                <span>{data.Luminious_Intensity}</span>
-                <span>{data.Voltage}</span>
-                <span>{data.Current}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
+          <table className='monitor-list'>
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                {parameters.map((data) => (
+                  <th style={{paddingTop: data.paddingTop, paddingBottom: data.paddingTop, fontWeight: "600"}}>{data.title}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {electricMeterUser.map((data) => (
+                <tr style={meterListStyle}>
+                  <td>{data.fan_name}</td>
+                  <td><FaFan size={50} color={'white'} alt='fan image'/></td>
+                  <td style={data.work_status === 'true' ? { color: 'green' } : { color: 'red' }}>{data.work_status === 'true' ? 'Working' : 'Failing'}</td>
+                  <td>{data.Fan_Speed}</td>
+                  <td>{data.Speed_Number}</td>
+                  <td>{data.Rotation_Pattern}</td>
+                  <td>{data.Voltage}</td>
+                  <td>{data.Current}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
       </div>
       <Chart
         chartType="Line"
         width="78em"
         height="300px"
-        style={{ position: 'relative', left: '1em' }}
+        style={{ position: 'relative'}}
         data={data}
         options={options}
       />
